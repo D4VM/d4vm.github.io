@@ -16,7 +16,5 @@ The design is based on the professional PDF resume layout, featuring:
 - Print-optimized styles
 
 ## Structure
-- `index.html`: Georgian version
-- `index-en.html`: English version
+- `index.html`: Main landing page with language support
 - `assets/`: Images and favicon
-- `resume/`: PDF versions of the resume

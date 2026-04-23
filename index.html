@@ -138,10 +138,6 @@
                         <i class="fa fa-location-dot text-sky-500"></i>
                         <span data-i18n="location">თბილისი, საქართველო</span>
                     </div>
-                    <a id="pdf-link" href="#" class="flex items-center gap-2 hover:text-sky-600 transition-colors no-print" target="_blank">
-                        <i class="fa fa-file-pdf text-sky-500"></i>
-                        <span data-i18n="downloadPdf">CV-ს გადმოწერა (PDF)</span>
-                    </a>
                 </div>
             </div>
             <div class="shrink-0 profile-img-container md:absolute md:top-8 md:right-12">
@@ -361,15 +357,13 @@
                 langEng: "ინგლისური",
                 langNative: "მშობლიური",
                 langAdvanced: "მოწინავე",
-                footerName: "დავით მირუაშვილი",
-                pdfHref: "resume/ge_resume_davit_miruashvili.pdf"
+                footerName: "დავით მირუაშვილი"
             },
             en: {
                 pageTitle: "Davit Miruashvili - Resume",
                 name: "Davit Miruashvili",
                 role: "SYSTEM ADMINISTRATOR",
                 location: "Tbilisi, Georgia",
-                downloadPdf: "Download CV (PDF)",
                 titleExperience: "Professional Experience",
                 exp1Date: "2012 — Present",
                 exp1Company: "Medical Company: Asfarma Georgia",
@@ -410,8 +404,7 @@
                 langEng: "English",
                 langNative: "Native",
                 langAdvanced: "Advanced",
-                footerName: "Davit Miruashvili",
-                pdfHref: "resume/en_resume_davit_miruashvili.pdf"
+                footerName: "Davit Miruashvili"
             }
         };
 
@@ -432,7 +425,6 @@
                 }
             });
 
-            document.getElementById('pdf-link').href = translations[lang].pdfHref;
             document.getElementById('lang-ka').className = `px-3 py-1 rounded text-sm font-bold shadow-sm transition-all ${lang === 'ka' ? 'bg-sky-600 text-white' : 'bg-white text-gray-600 hover:bg-gray-50'}`;
             document.getElementById('lang-en').className = `px-3 py-1 rounded text-sm font-bold shadow-sm transition-all ${lang === 'en' ? 'bg-sky-600 text-white' : 'bg-white text-gray-600 hover:bg-gray-50'}`;
         }
