@@ -1,260 +1,445 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ka">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>რეზიუმე: დავით მირუაშვილი</title>
+    <title data-i18n="pageTitle">დავით მირუაშვილი - რეზიუმე</title>
     <link rel="shortcut icon" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
-    <link id="theme-style" rel="stylesheet" href="assets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        a {
-            color: #2287C9;
-            text-decoration: underline;
+        body { font-family: 'Inter', sans-serif; }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 2px;
         }
-
-        a:hover {
-            color: #339900;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #0ea5e9;
         }
-
+        .experience-list li::before {
+            content: "•";
+            color: #0ea5e9;
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
         @media print {
-            .page-break {
-                page-break-before: always;
+            @page {
+                margin: 0.4cm;
+                size: A4 portrait;
             }
+            body {
+                background-color: white !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                font-size: 8.2pt !important;
+                line-height: 1.05 !important;
+            }
+            .no-print { display: none !important; }
+            .shadow-xl { box-shadow: none !important; }
+            .main-container {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+                display: block !important;
+            }
+            header { 
+                padding: 0 0 2mm 0 !important; 
+                margin-bottom: 2mm !important;
+                border-bottom: 2px solid #0ea5e9 !important;
+                position: relative !important;
+                display: block !important;
+                min-height: 22mm !important;
+            }
+            .header-info {
+                width: 80% !important;
+            }
+            .profile-img-container {
+                position: absolute !important;
+                top: 0 !important;
+                right: 0 !important;
+                display: block !important;
+            }
+            .grid-container {
+                display: flex !important;
+                flex-direction: row !important;
+                gap: 5mm !important;
+                padding: 0 !important;
+            }
+            .content-left { width: 68% !important; }
+            .content-right { width: 32% !important; }
+            
+            section { 
+                page-break-inside: avoid !important; 
+                margin-bottom: 2.5mm !important;
+            }
+            .space-y-12 > :not([hidden]) ~ :not([hidden]) { margin-top: 3mm !important; }
+            .space-y-10 > :not([hidden]) ~ :not([hidden]) { margin-top: 2mm !important; }
+            .space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5mm !important; }
+            
+            h1 { font-size: 16pt !important; margin-bottom: 0.5mm !important; }
+            h2 { font-size: 10pt !important; margin-bottom: 1.5mm !important; }
+            h3 { font-size: 8.5pt !important; }
+            
+            .text-sky-600 { color: #0284c7 !important; }
+            .text-sky-500 { color: #0ea5e9 !important; }
+            .text-slate-800 { color: #1e293b !important; }
+            .text-gray-600 { color: #374151 !important; }
+            
+            .profile-img-container img {
+                width: 18mm !important;
+                height: 18mm !important;
+                border: 1px solid #e0f2fe !important;
+                border-radius: 4px !important;
+            }
+            .mt-6 { margin-top: 1mm !important; }
         }
     </style>
 </head>
+<body class="bg-gray-100 text-gray-900 antialiased p-0 md:p-8">
 
-<body>
-    <article class="resume-wrapper text-center position-relative">
-        <div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
-            <header class="resume-header pt-4 pt-md-0">
-                <div class="media flex-column flex-md-row">
-                    <img class="mr-3 img-fluid picture mx-auto" src="assets/me.jpeg" alt="Davit Miruashvili">
-                    <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
-                        <div class="primary-info">
-                            <h1 class="name mt-0 mb-1 text-white text-uppercase">დავით მირუაშვილი</h1>
-                            <div class="title mb-3">IT სპეციალისტი</div>
-                            <ul class="list-unstyled">
-                                <li class="mb-2">
-                                    <a href="mailto:davit.miru@gmail.com">
-                                        <i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>
-                                        davit.miru@gmail.com
-                                    </a>
-                                </li>
+    <!-- Language Switcher -->
+    <div class="max-w-4xl mx-auto mb-4 flex justify-end space-x-2 no-print">
+        <button onclick="setLanguage('ka')" id="lang-ka" class="px-3 py-1 rounded text-sm font-bold shadow-sm transition-all">KA</button>
+        <button onclick="setLanguage('en')" id="lang-en" class="px-3 py-1 rounded text-sm font-bold shadow-sm transition-all">EN</button>
+    </div>
 
-                                <li>
-                                    <a>
-                                        <i class="fa fa-phone fa-fw mr-2" data-fa-transform="grow-6"></i>
-                                        +995 593 33 86 55
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-
-                                        <i class="fa fa-download fa-fw mr-2" data-fa-transform="grow-6"></i>
-                                        <a href="resume/ge_resume_davit_miruashvili.pdf">CV-ს გადმოწერა</a>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="secondary-info ml-md-auto mt-2">
-                            <ul class="resume-social list-unstyled">
-                                <li class="mb-3">
-                                    <a href="https://www.facebook.com/dav.miru">
-                                        <span class="fa-container text-center mr-2">
-                                            <i class="fab fa-facebook-square fa-fw"></i>
-                                        </span>
-                                        dav.miru
-                                    </a>
-                                </li>
-                                <li class="mb-3">
-                                    <a href="https://github.com/D4VM">
-                                        <span class="fa-container text-center mr-2">
-                                            <i class="fab fa-github fa-fw"></i>
-                                        </span>
-                                        D4VM
-                                    </a>
-                                </li>
-                                <li class="mb-3">
-                                    <a>
-                                        <span class="fa-container text-center mr-2">
-                                            <i class="fa fa-globe fa-fw"></i>
-                                        </span>
-                                        საქართველო, თბილისი
-                                    </a>
-                                </li>
-                                <li class="mb-3">
-                                    <a>
-                                        <span class="fa-container text-center mr-2">
-                                            <i class="fa-solid fa-language"></i>
-                                        </span>
-                                        ენები: KA | EN | RU
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </div>
+    <main class="max-w-4xl mx-auto bg-white shadow-xl overflow-hidden main-container">
+        
+        <!-- Header Section -->
+        <header class="p-8 md:p-12 border-b-4 border-sky-500 relative">
+            <div class="header-info">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800 tracking-tight" data-i18n="name">დავით მირუაშვილი</h1>
+                <p class="text-sky-600 text-xl md:text-2xl font-bold mt-2 uppercase tracking-widest" data-i18n="role">სისტემური ადმინისტრატორი</p>
+                
+                <div class="flex flex-wrap gap-4 mt-6 text-sm text-gray-600">
+                    <div class="flex items-center gap-2">
+                        <i class="fa fa-envelope text-sky-500"></i>
+                        <span>davit.miru@gmail.com</span>
                     </div>
-                </div>
-            </header>
-
-
-            <div class="resume-body p-5">
-                <div class="row">
-                    <div class="col-lg-9">
-                        <section class="resume-section experience-section mb-5">
-                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">სამუშაო
-                                გამოცდილება</h2>
-                            <div class="resume-section-content">
-                                <div class="resume-timeline position-relative">
-                                    <article class="resume-timeline-item position-relative pb-5">
-                                        <div class="resume-timeline-item-header mb-2">
-                                            <div class="d-flex flex-column flex-md-row">
-                                                <h3 class="resume-position-title font-weight-bold mb-1">IT სპეციალისტი /
-                                                    Back Office</h3>
-                                                <div class="resume-company-name ml-auto"> სამედიცინო კომპანია: Asfarma
-                                                    Georgia</div>
-                                            </div>
-                                            <div class="resume-position-time">2012 — დღემდე</div>
-                                        </div>
-                                        <div class="resume-timeline-item-desc">
-                                            <ul>
-                                                <li>სტანდარტული IT მხარდაჭერა.</li>
-                                                <li>ინფორმაციის მოპოვება, ანალიზი, დამუშავება და სტანდარტიზაცია.</li>
-
-                                                <li>სამედიცინო წარმომადგენლების ინდივიდუალური შესრულება და შეფასება.
-                                                </li>
-                                                <li>Live GPS ნავიგაცია. ინსტალიაცია და
-                                                    კონფიგურაცია. </li>
-                                                <li>კომპანიის Facebook გვერდის და რეკლამის მართვა.</li>
-                                                <li>Proxmox სერვერის ვირტუალიზაცია. სხვა და სხვა ტიპის ვირტუალური
-                                                    მანქანების მართვა.</li>
-                                                <li>ავტომატიზაციის სკრიპტები.</li>
-                                            </ul>
-                                        </div>
-                                    </article>
-
-                                    <article class="resume-timeline-item position-relative pb-5">
-                                        <div class="resume-timeline-item-header mb-2">
-                                            <div class="d-flex flex-column flex-md-row">
-                                                <h3 class="resume-position-title font-weight-bold mb-1">[დისტანციურად]
-                                                    IT სპეციალისტი
-                                                </h3>
-                                                <div class="resume-company-name ml-auto">მაღაზიის ქსელი: Mothercare
-                                                    (Sabah Group Georgia)</div>
-                                            </div>
-                                            <div class="resume-position-time">2021 — 2024</div>
-                                        </div>
-                                        <div class="resume-timeline-item-desc">
-                                            <ul>
-                                                <li>2 მაღაზიის და საწყობის დისტანციური მხარდაჭერა.</li>
-                                                <li>არსებული ინფრასტრუქტურის მართვა.</li>
-                                                <li>Hardware და Software ინსტალიაცია და კონფიგურირება.</li>
-
-                                            </ul>
-                                        </div>
-                                    </article>
-
-                                    <article class="resume-timeline-item position-relative pb-5">
-                                        <div class="resume-timeline-item-header mb-2">
-                                            <div class="d-flex flex-column flex-md-row">
-                                                <h3 class="resume-position-title font-weight-bold mb-1">სტაჟიორი</h3>
-                                                <div class="resume-company-name ml-auto">საქართველოს რკინიგზა</div>
-                                            </div>
-                                            <div class="resume-position-time">2011 — 2012</div>
-                                        </div>
-                                        <div class="resume-timeline-item-desc">
-                                            <ul>
-                                                <li>IT / Helpdesk მხარდაჭერა</li>
-                                            </ul>
-                                        </div>
-                                    </article>
-                                </div>
-                            </div>
-                        </section>
+                    <div class="flex items-center gap-2">
+                        <i class="fa fa-phone text-sky-500"></i>
+                        <span>+995 593 33 86 55</span>
                     </div>
-
-                    <div class="col-lg-3 page-break">
-                        <section class="resume-section education-section mb-5">
-                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">უნარები</h2>
-                            <div class="resume-section-content">
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <strong>სისტემები:</strong>
-                                        <ul>
-                                            <li><strong>Windows XP–Windows 11:</strong>
-                                                <ul>
-                                                    <li>ინსტალიაცია</li>
-                                                    <li>კონფიგურირება</li>
-                                                    <li>პრობლემების მოგვარება</li>
-                                                </ul>
-                                            </li><br>
-                                            <li><strong>Linux:</strong>
-                                                <ul>
-                                                    <li>ინსტალიაცია</li>
-                                                    <li>კონფიგურირება</li>
-                                                    <li>პრობლემების მოგვარება</li>
-                                                </ul>
-                                            </li><br>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <strong>საოფისე პროგრამები:</strong>
-                                        <ul>
-                                            <li>Excel(Power User)</li>
-                                            <li>Word</li>
-                                            <li>PowerPoint</li>
-                                            <li>პრობლემების მოგვარება</li>
-                                        </ul>
-                                    </li><br>
-                                    <li>
-                                        <strong>დიზაინის პროგრამები:</strong>
-                                        <ul>
-                                            <li>Adobe Photshop-ის გამოცდილება</li>
-                                            <li>After Effects-ის გამოცდილება</li>
-                                        </ul>
-                                    </li><br>
-                                    <li>
-                                        <strong>პროგრამირების ენები:</strong>
-                                        <ul>
-                                            <li><strong>Python / Frameworks:</strong>
-                                                <ul>
-                                                    <li>Django</li>
-                                                    <li>FastAPI</li>
-                                                    <li>Requests</li>
-                                                    <li>BeautifulSoup</li>
-                                                    <li>SQLAlchemy</li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </section>
-
-                        <section class="resume-section reference-section mb-5">
-                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">განათლება /
-                                კურსები</h2>
-                            <div class="resume-section-content">
-                                <ul class="list-unstyled">
-                                    <li><strong>2008 – 2012 საქართველოს ტექნიკური უნივერსიტეტი - კომპიუტერული სისტემები
-                                            და ქსელები</strong></li><br>
-                                    <li><strong>Linux Basic Administration</strong></li><br>
-                                    <li><strong>commschool.ge - Python კურსი</strong></li>
-                                </ul>
-                            </div>
-                        </section>
+                    <div class="flex items-center gap-2">
+                        <i class="fa fa-location-dot text-sky-500"></i>
+                        <span data-i18n="location">თბილისი, საქართველო</span>
                     </div>
+                    <a id="pdf-link" href="#" class="flex items-center gap-2 hover:text-sky-600 transition-colors no-print" target="_blank">
+                        <i class="fa fa-file-pdf text-sky-500"></i>
+                        <span data-i18n="downloadPdf">CV-ს გადმოწერა (PDF)</span>
+                    </a>
                 </div>
             </div>
-            <footer class="resume-footer text-center py-4">
-                <p class="mb-0">© 2024 Davit Miruashvili</p>
-            </footer>
-        </div>
-    </article>
-</body>
+            <div class="shrink-0 profile-img-container md:absolute md:top-8 md:right-12">
+                <img class="w-24 h-24 md:w-32 md:h-32 rounded border-4 border-sky-100 object-cover" src="assets/me.jpeg" alt="Davit Miruashvili">
+            </div>
+        </header>
 
+        <div class="flex flex-col md:flex-row gap-12 p-8 md:p-12 grid-container">
+            <!-- Left Column -->
+            <div class="md:w-2/3 space-y-12 content-left">
+                
+                <!-- Experience -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 section-title uppercase tracking-wide" data-i18n="titleExperience">პროფესიული გამოცდილება</h2>
+                    <div class="space-y-10">
+                        <div>
+                            <div class="flex justify-between items-baseline flex-wrap gap-2 mb-1">
+                                <h3 class="text-xl font-bold text-slate-800">IT Manager / Back Office</h3>
+                                <span class="text-gray-400 text-sm font-medium" data-i18n="exp1Date">2012 — დღემდე</span>
+                            </div>
+                            <p class="text-sky-700 font-bold mb-3" data-i18n="exp1Company">სამედიცინო კომპანია: Asfarma Georgia</p>
+                            <ul class="text-gray-600 space-y-1.5 text-sm pl-4 experience-list" data-i18n="exp1Bullets">
+                                <li>სისტემური ინფრასტრუქტურის სრული მართვა და 24/7 მხარდაჭერა.</li>
+                                <li>მონაცემთა ანალიტიკური დამუშავება და რეპორტინგის ავტომატიზაცია.</li>
+                                <li>მუშაობის ეფექტურობის მონიტორინგის სისტემების დანერგვა.</li>
+                                <li>GPS მონიტორინგის სისტემების არქიტექტურა და კონფიგურაცია.</li>
+                                <li>ვირტუალიზაციის გარემოს (Proxmox/VMs) ოპტიმიზაცია და მართვა.</li>
+                                <li>Python-ზე დაფუძნებული სკრიპტების შექმნა ავტომატიზაციისთვის.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-baseline flex-wrap gap-2 mb-1">
+                                <h3 class="text-xl font-bold text-slate-800" data-i18n="exp2Title">IT Specialist (Remote)</h3>
+                                <span class="text-gray-400 text-sm font-medium">2021 — 2024</span>
+                            </div>
+                            <p class="text-sky-700 font-bold mb-3" data-i18n="exp2Company">Mothercare (Sabah Group Georgia)</p>
+                            <ul class="text-gray-600 space-y-1.5 text-sm pl-4 experience-list" data-i18n="exp2Bullets">
+                                <li>საცალო ქსელისა და საწყობის IT ინფრასტრუქტურის ადმინისტრირება.</li>
+                                <li>აპარატურული და პროგრამული ხარვეზების დიაგნოსტიკა და აღმოფხვრა.</li>
+                                <li>უსაფრთხოების პროტოკოლების დანერგვა და სისტემური მონიტორინგი.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-baseline flex-wrap gap-2 mb-1">
+                                <h3 class="text-xl font-bold text-slate-800" data-i18n="exp3Title">IT Helpdesk Support</h3>
+                                <span class="text-gray-400 text-sm font-medium">2011 — 2012</span>
+                            </div>
+                            <p class="text-sky-700 font-bold mb-1 uppercase tracking-tight" data-i18n="exp3Company">საქართველოს რკინიგზა</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 section-title uppercase tracking-wide" data-i18n="titleEducation">განათლება</h2>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-baseline flex-wrap gap-2">
+                            <h3 class="text-lg font-bold text-slate-800" data-i18n="eduDegree">ბაკალავრი — კომპიუტერული სისტემები და ქსელები</h3>
+                            <span class="text-gray-400 text-sm font-medium">2008 — 2012</span>
+                        </div>
+                        <p class="text-sky-700 font-bold text-sm uppercase" data-i18n="eduUni">საქართველოს ტექნიკური უნივერსიტეტი</p>
+                    </div>
+                </section>
+
+                <!-- Certifications -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 section-title uppercase tracking-wide" data-i18n="titleCertifications">სერტიფიკატები</h2>
+                    <div class="grid grid-cols-2 gap-y-4 gap-x-8">
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                            <span class="font-bold text-slate-700 text-sm">Linux Basic Administration</span>
+                            <span class="text-gray-400 text-xs">2016</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                            <div class="flex flex-col">
+                                <span class="font-bold text-slate-700 text-sm" data-i18n="certPython">Python პროგრამირება</span>
+                                <span class="text-xs text-sky-600">commschool.ge</span>
+                            </div>
+                            <span class="text-gray-400 text-xs">2023</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                            <div class="flex flex-col">
+                                <span class="font-bold text-slate-700 text-sm" data-i18n="certLpic">LPIC-1 - Linux პროფესიონალი</span>
+                                <span class="text-xs text-sky-600 font-medium">grena.ge</span>
+                            </div>
+                            <span class="text-gray-400 text-xs font-bold">2026</span>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Right Column -->
+            <div class="md:w-1/3 space-y-12 content-right">
+                
+                <!-- Skills -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-800 mb-8 section-title uppercase tracking-wide" data-i18n="titleSkills">კომპეტენციები</h2>
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-sky-600 font-bold uppercase tracking-wider text-xs mb-3" data-i18n="skillSystems">სისტემები</h3>
+                            <div class="space-y-3 text-sm text-slate-700">
+                                <p><strong class="text-slate-900 font-bold block mb-1">Windows Ecosystem:</strong> <span data-i18n="skillWindowsDesc">ინსტალაცია, კონფიგურაცია, დიაგნოსტიკა</span></p>
+                                <p><strong class="text-slate-900 font-bold block mb-1">Linux Systems:</strong> <span data-i18n="skillLinuxDesc">ადმინისტრირება, უსაფრთხოება, ოპტიმიზაცია</span></p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-sky-600 font-bold uppercase tracking-wider text-xs mb-3" data-i18n="skillOffice">პროფესიული ინსტრუმენტები</h3>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                <strong class="text-slate-900 font-bold">MS Excel (Advanced), Word, PowerPoint, Outlook</strong>
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="text-sky-600 font-bold uppercase tracking-wider text-xs mb-3" data-i18n="skillDesign">დიზაინი და მულტიმედია</h3>
+                            <p class="text-sm text-slate-700">
+                                Adobe Photoshop, After Effects
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="text-sky-600 font-bold uppercase tracking-wider text-xs mb-3" data-i18n="skillProgramming">ტექნიკური სტეკი</h3>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                <strong class="text-slate-900 font-bold block mb-2">Python / Frameworks:</strong> Django, FastAPI, Requests, BeautifulSoup, SQLAlchemy
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Languages -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-800 mb-8 section-title uppercase tracking-wide" data-i18n="titleLanguages">ენები</h2>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center text-sm border-b border-gray-50 pb-2">
+                            <span class="text-slate-800 font-bold" data-i18n="langGeo">ქართული</span>
+                            <span class="text-gray-400 italic text-xs" data-i18n="langNative">მშობლიური</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm border-b border-gray-50 pb-2">
+                            <span class="text-slate-800 font-bold" data-i18n="langRus">რუსული</span>
+                            <span class="text-gray-400 italic text-xs" data-i18n="langNative">მშობლიური</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm border-b border-gray-50 pb-2">
+                            <span class="text-slate-800 font-bold" data-i18n="langEng">ინგლისური</span>
+                            <span class="text-gray-400 italic text-xs" data-i18n="langAdvanced">მოწინავე</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Social Links -->
+                <section class="no-print pt-8">
+                    <div class="flex gap-4">
+                        <a href="https://github.com/D4VM" class="w-10 h-10 bg-slate-800 text-white rounded flex items-center justify-center hover:bg-sky-600 transition-all shadow-md transform hover:-translate-y-1" target="_blank">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/dav.miru" class="w-10 h-10 bg-slate-800 text-white rounded flex items-center justify-center hover:bg-sky-600 transition-all shadow-md transform hover:-translate-y-1" target="_blank">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-auto py-8 text-center text-gray-400 text-[10px] uppercase tracking-widest border-t border-gray-50 no-print">
+            © 2026 <span data-i18n="footerName">დავით მირუაშვილი</span>
+        </footer>
+    </main>
+
+    <script>
+        const translations = {
+            ka: {
+                pageTitle: "დავით მირუაშვილი - რეზიუმე",
+                name: "დავით მირუაშვილი",
+                role: "სისტემური ადმინისტრატორი",
+                location: "თბილისი, საქართველო",
+                downloadPdf: "CV-ს გადმოწერა (PDF)",
+                titleExperience: "პროფესიული გამოცდილება",
+                exp1Date: "2012 — დღემდე",
+                exp1Company: "სამედიცინო კომპანია: Asfarma Georgia",
+                exp1Bullets: `
+                    <li>სისტემური ინფრასტრუქტურის სრული მართვა და 24/7 მხარდაჭერა.</li>
+                    <li>მონაცემთა ანალიტიკური დამუშავება და რეპორტინგის ავტომატიზაცია.</li>
+                    <li>მუშაობის ეფექტურობის მონიტორინგის სისტემების დანერგვა.</li>
+                    <li>GPS მონიტორინგის სისტემების არქიტექტურა და კონფიგურაცია.</li>
+                    <li>ვირტუალიზაციის გარემოს (Proxmox/VMs) ოპტიმიზაცია და მართვა.</li>
+                    <li>Python-ზე დაფუძნებული სკრიპტების შექმნა ავტომატიზაციისთვის.</li>
+                `,
+                exp2Title: "IT სპეციალისტი (დისტანციური)",
+                exp2Company: "Mothercare (Sabah Group Georgia)",
+                exp2Bullets: `
+                    <li>საცალო ქსელისა და საწყობის IT ინფრასტრუქტურის ადმინისტრირება.</li>
+                    <li>აპარატურული და პროგრამული ხარვეზების დიაგნოსტიკა და აღმოფხვრა.</li>
+                    <li>უსაფრთხოების პროტოკოლების დანერგვა და სისტემური მონიტორინგი.</li>
+                `,
+                exp3Title: "IT Helpdesk მხარდაჭერა",
+                exp3Company: "საქართველოს რკინიგზა",
+                titleEducation: "განათლება",
+                eduDegree: "ბაკალავრი — კომპიუტერული სისტემები და ქსელები",
+                eduUni: "საქართველოს ტექნიკური უნივერსიტეტი",
+                titleCertifications: "სერტიფიკატები",
+                certPython: "Python პროგრამირება",
+                certLpic: "LPIC-1 - Linux პროფესიონალი",
+                titleSkills: "კომპეტენციები",
+                skillSystems: "სისტემები",
+                skillWindowsDesc: "ინსტალაცია, კონფიგურაცია, დიაგნოსტიკა",
+                skillLinuxDesc: "ადმინისტრირება, უსაფრთხოება, ოპტიმიზაცია",
+                skillOffice: "პროფესიული ინსტრუმენტები",
+                troubleshooting: "ხარვეზების აღმოფხვრა",
+                skillDesign: "დიზაინი და მულტიმედია",
+                skillProgramming: "ტექნიკური სტეკი",
+                titleLanguages: "ენები",
+                langGeo: "ქართული",
+                langRus: "რუსული",
+                langEng: "ინგლისური",
+                langNative: "მშობლიური",
+                langAdvanced: "მოწინავე",
+                footerName: "დავით მირუაშვილი",
+                pdfHref: "resume/ge_resume_davit_miruashvili.pdf"
+            },
+            en: {
+                pageTitle: "Davit Miruashvili - Resume",
+                name: "Davit Miruashvili",
+                role: "SYSTEM ADMINISTRATOR",
+                location: "Tbilisi, Georgia",
+                downloadPdf: "Download CV (PDF)",
+                titleExperience: "Professional Experience",
+                exp1Date: "2012 — Present",
+                exp1Company: "Medical Company: Asfarma Georgia",
+                exp1Bullets: `
+                    <li>Spearheaded full-scale IT infrastructure management and 24/7 technical operations.</li>
+                    <li>Engineered automated data processing and business intelligence reporting workflows.</li>
+                    <li>Implemented performance tracking systems to optimize representative output.</li>
+                    <li>Architected and configured live GPS monitoring and navigation systems.</li>
+                    <li>Optimized Proxmox virtualization environments and managed enterprise security protocols.</li>
+                    <li>Developed custom Python scripts to automate redundant administrative tasks.</li>
+                `,
+                exp2Title: "IT Specialist (Remote)",
+                exp2Company: "Retail Chain: Mothercare (Sabah Group)",
+                exp2Bullets: `
+                    <li>Administered remote IT infrastructure for retail branches and regional warehouses.</li>
+                    <li>Diagnosed and resolved hardware/software critical failures with minimal downtime.</li>
+                    <li>Enforced security standards and conducted regular system integrity audits.</li>
+                `,
+                exp3Title: "IT Helpdesk Support",
+                exp3Company: "Georgian Railway",
+                titleEducation: "Education",
+                eduDegree: "Bachelor — Computer Systems and Networks",
+                eduUni: "Georgian Technical University",
+                titleCertifications: "Certifications",
+                certPython: "Python Programming",
+                certLpic: "LPIC-1 - Linux Professional",
+                titleSkills: "Core Competencies",
+                skillSystems: "Operating Systems",
+                skillWindowsDesc: "Deployment, Configuration, Troubleshooting",
+                skillLinuxDesc: "Administration, Security, Performance Tuning",
+                skillOffice: "Professional Suite",
+                troubleshooting: "Troubleshooting",
+                skillDesign: "Design & Multimedia",
+                skillProgramming: "Technical Stack",
+                titleLanguages: "Languages",
+                langGeo: "Georgian",
+                langRus: "Russian",
+                langEng: "English",
+                langNative: "Native",
+                langAdvanced: "Advanced",
+                footerName: "Davit Miruashvili",
+                pdfHref: "resume/en_resume_davit_miruashvili.pdf"
+            }
+        };
+
+        function setLanguage(lang) {
+            localStorage.setItem('preferredLang', lang);
+            document.documentElement.lang = lang;
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    if (el.tagName === 'TITLE') {
+                        document.title = translations[lang][key];
+                    } else if (key.endsWith('Bullets')) {
+                        el.innerHTML = translations[lang][key];
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            document.getElementById('pdf-link').href = translations[lang].pdfHref;
+            document.getElementById('lang-ka').className = `px-3 py-1 rounded text-sm font-bold shadow-sm transition-all ${lang === 'ka' ? 'bg-sky-600 text-white' : 'bg-white text-gray-600 hover:bg-gray-50'}`;
+            document.getElementById('lang-en').className = `px-3 py-1 rounded text-sm font-bold shadow-sm transition-all ${lang === 'en' ? 'bg-sky-600 text-white' : 'bg-white text-gray-600 hover:bg-gray-50'}`;
+        }
+
+        const savedLang = localStorage.getItem('preferredLang');
+        const browserLang = navigator.language.startsWith('ka') ? 'ka' : 'en';
+        setLanguage(savedLang || browserLang);
+    </script>
+</body>
 </html>
